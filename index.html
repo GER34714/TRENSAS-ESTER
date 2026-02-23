@@ -1,3 +1,4 @@
+```html id="7n4k2p"
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,11 +25,10 @@
 
   <style>
     :root{
-      --bg:#0b0b0d;
+      --bg:#09090b;
       --panel:#121216;
       --panel-2:#17171d;
       --card:#1b1b23;
-      --line:#2a2a35;
       --text:#f5f5f7;
       --muted:#b3b5c3;
       --accent:#d4a373;
@@ -37,22 +37,49 @@
       --wa-dark:#1faa53;
       --danger:#ffb4b4;
       --danger-bg:rgba(255,70,70,.12);
-      --radius:18px;
       --shadow:0 10px 35px rgba(0,0,0,.28);
       --max:1180px;
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{overflow-x:hidden}
+
     body{
       font-family:"Outfit",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-      background:
-        radial-gradient(900px 500px at 10% -10%, rgba(212,163,115,.10), transparent 60%),
-        radial-gradient(900px 500px at 100% 10%, rgba(255,255,255,.04), transparent 60%),
-        var(--bg);
       color:var(--text);
       line-height:1.45;
+      background-color: var(--bg);
+      position: relative;
     }
+
+    /* Overlay GLOBAL en toda la pagina */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      background:
+        linear-gradient(180deg, rgba(7,7,9,.86), rgba(7,7,9,.90)),
+        url("https://iili.io/qFvo9Q1.jpg") center/cover no-repeat;
+      background-attachment: fixed;
+      opacity:.95;
+      filter:saturate(1.05);
+      pointer-events:none;
+    }
+
+    /* Capa extra para lectura */
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      pointer-events:none;
+      background:
+        radial-gradient(800px 480px at 8% 0%, rgba(212,163,115,.12), transparent 60%),
+        radial-gradient(900px 520px at 100% 8%, rgba(255,255,255,.04), transparent 60%),
+        radial-gradient(1000px 700px at 50% 100%, rgba(0,0,0,.25), transparent 70%);
+    }
+
     img,video{display:block;max-width:100%;object-fit:cover}
     a{text-decoration:none;color:inherit}
     .container{width:min(var(--max), calc(100% - 28px)); margin-inline:auto}
@@ -79,8 +106,8 @@
     header{
       position:sticky; top:0; z-index:1000;
       backdrop-filter: blur(12px);
-      background: rgba(11,11,13,.72);
-      border-bottom:1px solid rgba(255,255,255,.05);
+      background: rgba(10,10,12,.78);
+      border-bottom:1px solid rgba(255,255,255,.06);
     }
     .nav{
       height:74px; display:flex; align-items:center; justify-content:space-between; gap:12px;
@@ -103,24 +130,14 @@
       position:relative;
       overflow:hidden;
       border-radius:24px;
-      border:1px solid rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
       box-shadow:var(--shadow);
-      background: #101014;
+      background:rgba(12,12,16,.55);
+      backdrop-filter: blur(6px);
     }
-    .hero-overlay{
-      position:absolute;
-      inset:0;
-      background-image:
-        linear-gradient(115deg, rgba(8,8,10,.88) 0%, rgba(8,8,10,.72) 42%, rgba(8,8,10,.86) 100%),
-        url("https://iili.io/qFvo9Q1.jpg");
-      background-size: cover;
-      background-position: center;
-      filter: saturate(1.05);
-      opacity: .95;
-    }
+
     .hero-inner{
       position:relative;
-      z-index:1;
       display:grid;
       grid-template-columns: 1.1fr .9fr;
       gap:18px;
@@ -129,7 +146,7 @@
     }
     .hero-card, .hero-side{
       background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
-      border:1px solid rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.08);
       border-radius:20px;
       backdrop-filter: blur(4px);
     }
@@ -211,12 +228,13 @@
 
     .g-card{
       grid-column:span 3;
-      background:var(--card);
-      border:1px solid rgba(255,255,255,.06);
+      background:rgba(20,20,26,.82);
+      border:1px solid rgba(255,255,255,.07);
       border-radius:14px;
       overflow:hidden;
       box-shadow:0 6px 20px rgba(0,0,0,.18);
       transition:transform .2s ease, border-color .2s ease;
+      backdrop-filter: blur(3px);
     }
     .g-card:hover{transform:translateY(-3px); border-color:rgba(212,163,115,.28)}
     .g-media{
@@ -255,31 +273,34 @@
       gap:12px;
     }
     .info-card{
-      background:var(--panel);
-      border:1px solid rgba(255,255,255,.06);
+      background:rgba(18,18,22,.82);
+      border:1px solid rgba(255,255,255,.07);
       border-radius:16px; padding:14px;
+      backdrop-filter: blur(3px);
     }
     .info-card h3{font-size:1rem; margin-bottom:4px; letter-spacing:-.2px}
     .info-card p{font-size:.88rem; color:var(--muted)}
     .info-card .big{font-size:1.25rem; color:var(--accent-2); font-weight:800; margin-bottom:4px}
 
     .products-wrap{
-      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-      border:1px solid rgba(255,255,255,.06);
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border:1px solid rgba(255,255,255,.07);
       border-radius:20px; padding:14px;
       box-shadow:var(--shadow);
+      backdrop-filter: blur(4px);
     }
     .products-note{color:var(--muted); font-size:.9rem; margin-bottom:12px}
     .products-grid{
       display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
     }
     .p-card{
-      background:var(--panel-2);
+      background:rgba(23,23,29,.88);
       border:1px solid rgba(255,255,255,.06);
       border-radius:16px;
       overflow:hidden;
       display:flex; flex-direction:column;
       min-height:100%;
+      backdrop-filter: blur(3px);
     }
     .p-thumb{
       aspect-ratio:16/10;
@@ -304,11 +325,12 @@
     .p-body .btn{margin-top:auto; width:100%; border-radius:12px; padding:11px 14px}
 
     .faq-wrap{
-      background:var(--panel);
-      border:1px solid rgba(255,255,255,.06);
+      background:rgba(18,18,22,.85);
+      border:1px solid rgba(255,255,255,.07);
       border-radius:20px;
       overflow:hidden;
       box-shadow:var(--shadow);
+      backdrop-filter: blur(3px);
     }
     .faq-item + .faq-item{border-top:1px solid rgba(255,255,255,.05)}
     .faq-btn{
@@ -331,6 +353,7 @@
       border:1px solid rgba(212,163,115,.22);
       border-radius:20px; padding:18px;
       display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap;
+      backdrop-filter: blur(3px);
     }
     .cta h3{font-size:1.2rem; letter-spacing:-.5px}
     .cta p{color:var(--muted); font-size:.9rem}
@@ -338,8 +361,10 @@
     footer{
       margin-top:18px;
       padding:20px 0 90px;
-      border-top:1px solid rgba(255,255,255,.05);
+      border-top:1px solid rgba(255,255,255,.06);
       color:var(--muted);
+      background:rgba(8,8,10,.28);
+      backdrop-filter: blur(4px);
     }
     .foot{
       display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:flex-start;
@@ -367,6 +392,7 @@
       .hero-inner{grid-template-columns:1fr}
       .products-grid{grid-template-columns:repeat(2,1fr)}
       .g-card{grid-column:span 4}
+      body::before{background-attachment: scroll}
     }
 
     @media (max-width: 720px){
@@ -411,8 +437,6 @@
     <section class="hero">
       <div class="container">
         <div class="hero-wrap">
-          <div class="hero-overlay"></div>
-
           <div class="hero-inner">
             <div class="hero-card">
               <div class="chips">
